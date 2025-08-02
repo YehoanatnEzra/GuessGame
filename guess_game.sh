@@ -20,8 +20,6 @@ player_name=""           # Name of the player
 difficulty=""            # Chosen difficulty
 score=0                  # Final calculated score
 
-# Functions
-
 # Prints welcome message and prompts user input
 print_intro() {
     echo -e "${CYAN}Welcome to 'Guess the Number'!${NC}"
