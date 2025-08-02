@@ -7,7 +7,7 @@ CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Globals
+# Globals vars
 max=0
 max_attempts=0
 SCORE_FILE=""
@@ -117,7 +117,7 @@ main_loop() {
     echo -e "${RED} Out of tries! The number was: $target${NC}"
 }
 
-
+# main:
 print_intro
 set_difficulty
 start_game
