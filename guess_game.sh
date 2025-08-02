@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -24,7 +23,7 @@ score=0
 # Functions
 
 print_intro() {
-    echo -e "${CYAN}🎮 Welcome to 'Guess the Number'!${NC}"
+    echo -e "${CYAN}Welcome to 'Guess the Number'!${NC}"
     read -p "Enter your name: " player_name
     echo "Choose difficulty: easy / medium / hard"
     read -p "Difficulty: " difficulty
