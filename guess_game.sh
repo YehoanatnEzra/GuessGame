@@ -1,27 +1,28 @@
 #!/bin/bash
 
-# Colors
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Globals vars
-max=0
-max_attempts=0
-SCORE_FILE=""
-target=0
-attempts=0
-start_time=0
-timeout_seconds=60
-no_hints=false
-player_name=""
-difficulty=""
-score=0
+# Global Variables:
+max=0                    # Maximum number to guess
+max_attempts=0           # Max allowed attempts
+SCORE_FILE=""            # Path to the score file
+target=0                 # Randomly chosen number to guess
+attempts=0               # Current attempt count
+start_time=0             # Time when the game starts
+timeout_seconds=60       # Max duration to finish the game
+no_hints=false           # Whether to disable hints
+player_name=""           # Name of the player
+difficulty=""            # Chosen difficulty
+score=0                  # Final calculated score
 
 # Functions
 
+# Prints welcome message and prompts user input
 print_intro() {
     echo -e "${CYAN}Welcome to 'Guess the Number'!${NC}"
     read -p "Enter your name: " player_name
@@ -29,6 +30,7 @@ print_intro() {
     read -p "Difficulty: " difficulty
 }
 
+# Sets game parameters based on selected difficulty
 set_difficulty() {
     case "$difficulty" in
         easy)
@@ -54,6 +56,7 @@ set_difficulty() {
     esac
 }
 
+# Initializes target number and prints game start info
 start_game() {
     target=$(( RANDOM % max + 1 ))
     attempts=0
@@ -62,6 +65,7 @@ start_game() {
     echo "You have $max_attempts tries and $timeout_seconds seconds!${NC}"
 }
 
+# Ends the game if the user took too long
 check_timeout() {
     local current_time=$(date +%s)
     local elapsed=$(( current_time - start_time ))
@@ -71,10 +75,10 @@ check_timeout() {
         exit 1
     fi
 }
-
+# Handles each user guess: input, validation, comparison, scoring
 handle_guess() {
     read -p "Guess #$((attempts+1)): " guess
-
+    # Input validation
     if ! [[ "$guess" =~ ^[0-9]+$ ]]; then
         echo -e "${RED} Invalid input! Enter a number.${NC}"
         return
@@ -107,7 +111,7 @@ handle_guess() {
         fi
     fi
 }
-
+# Main game loop: checks for timeout and handles guesses
 main_loop() {
     while [ $attempts -lt $max_attempts ]; do
         check_timeout
