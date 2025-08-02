@@ -5,3 +5,7 @@ The game includes colorful output, optional hints, and a high score tracking sys
 
 have fun :)
 
+## Feedback & Contact
+If you find any issues, have questions, or suggestions for improvement, feel free to reach out:
+- Email: yonzra12@gmail.com
+- Linkdin: www.linkedin.com/in/yehonatanezra
