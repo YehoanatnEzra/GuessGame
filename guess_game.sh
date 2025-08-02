@@ -7,6 +7,9 @@ CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+# Functions:
+#-------------------
+
 # Global Variables:
 max=0                    # Maximum number to guess
 max_attempts=0           # Max allowed attempts
